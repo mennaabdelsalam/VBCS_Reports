@@ -1,0 +1,51 @@
+{
+  "description": "",
+  "root": "ifButtonName",
+  "actions": {
+    "ifButtonName": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.buttonName == \"youtube\" ]]"
+      },
+      "outcomes": {
+        "true": "openUrl",
+        "false": "ifButtonName2"
+      }
+    },
+    "openUrl": {
+      "module": "vb/action/builtin/openUrlAction",
+      "parameters": {
+        "url": "https://www.youtube.com/c/BEENUMLEARNING"
+      }
+    },
+    "ifButtonName2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.buttonName == \"blog\" ]]"
+      },
+      "outcomes": {
+        "true": "openUrl3",
+        "false": "openUrl4"
+      }
+    },
+    "openUrl3": {
+      "module": "vb/action/builtin/openUrlAction",
+      "parameters": {
+        "url": "https://beenumlearning.wordpress.com/"
+      }
+    },
+    "openUrl4": {
+      "module": "vb/action/builtin/openUrlAction",
+      "parameters": {
+        "url": "https://www.google.com/"
+      }
+    }
+  },
+  "variables": {
+    "buttonName": {
+      "type": "string",
+      "required": false,
+      "input": "fromCaller"
+    }
+  }
+}

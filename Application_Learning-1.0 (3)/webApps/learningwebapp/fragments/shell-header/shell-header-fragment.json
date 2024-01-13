@@ -1,0 +1,52 @@
+{
+  "title": "Shell Header",
+  "eventListeners": {
+<<<<<<< HEAD
+    "buttonAction": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain",
+          "parameters": {
+            "buttonName": "{{ $current.data.name }}"
+          }
+        }
+      ]
+    },
+=======
+>>>>>>> f0510c9fdc52baa32d51e125b21b0755442e5df1
+    "openAvatarMenu": {
+      "chains": [
+        {
+          "chainId": "openAvatarMenu"
+        }
+      ]
+    }
+<<<<<<< HEAD
+
+=======
+>>>>>>> f0510c9fdc52baa32d51e125b21b0755442e5df1
+  },
+  "events": {},
+  "imports": {
+    "components": {
+      "oj-avatar": {
+        "path": "ojs/ojavatar"
+      },
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-popup": {
+        "path": "ojs/ojpopup"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      }
+    },
+    "css": [
+      "/resources/css/shell.css"
+    ]
+  },
+  "metadata": {},
+  "types": {},
+  "variables": {}
+}

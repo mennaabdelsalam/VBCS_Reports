@@ -1,0 +1,160 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "employeeListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_Employee",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallEmployeeResponse"
+      }
+    },
+<<<<<<< HEAD
+    "vPageEmployeeDetail": {
+      "type": "getallEmployeeResponseObjectType"
+    },
+=======
+>>>>>>> f0510c9fdc52baa32d51e125b21b0755442e5df1
+    "vPageSearchCriteria": {
+      "type": {
+        "EmployeeID": "string",
+        "Salary": "number",
+        "SalaryRadioSetValue": "string"
+      }
+    }
+
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getallEmployeeResponse": {
+      "endpoint": "getall_Employee",
+      "service": "businessObjects",
+      "path": "response"
+    },
+<<<<<<< HEAD
+    "@decorators.getallEmployeeResponseObjectType": {
+      "endpoint": "getall_Employee",
+      "service": "businessObjects",
+      "path": "response-_-items[0]"
+    },
+=======
+>>>>>>> f0510c9fdc52baa32d51e125b21b0755442e5df1
+    "getallEmployeeResponse": {
+      "items": [
+        {
+          "department": "number",
+          "email": "string",
+          "firstName": "string",
+          "id": "number",
+          "lastName": "string",
+          "lastUpdateDate": "string",
+          "lastUpdatedBy": "string",
+          "phoneNumber": "string",
+          "salary": "number"
+        }
+      ]
+<<<<<<< HEAD
+    },
+    "getallEmployeeResponseObjectType": {
+      "createdBy": "string",
+      "creationDate": "string",
+      "department": "number",
+      "departmentRelation": "number",
+      "email": "string",
+      "firstName": "string",
+      "hireDate": "string",
+      "id": "number",
+      "lastName": "string",
+      "lastUpdateDate": "string",
+      "lastUpdatedBy": "string",
+      "phoneNumber": "string",
+      "salary": "number"
+=======
+>>>>>>> f0510c9fdc52baa32d51e125b21b0755442e5df1
+    }
+  },
+  "eventListeners": {
+    "buttonAction": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChainSearchEmployee"
+        }
+      ]
+    },
+<<<<<<< HEAD
+    "hyperlinkClick": {
+      "chains": [
+        {
+          "chainId": "HyperlinkClickChainMoreDetailEmployee",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+=======
+>>>>>>> f0510c9fdc52baa32d51e125b21b0755442e5df1
+    "toggleDrawer": {
+      "chains": [
+        {
+          "chainId": "application:toggleDrawerHandler"
+        }
+      ]
+    }
+
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-collapsible": {
+        "path": "ojs/ojcollapsible"
+      },
+      "oj-dialog": {
+        "path": "ojs/ojdialog"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+<<<<<<< HEAD
+      "oj-input-date": {
+        "path": "ojs/ojdatetimepicker"
+      },
+=======
+>>>>>>> f0510c9fdc52baa32d51e125b21b0755442e5df1
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-label": {
+        "path": "ojs/ojlabel"
+      },
+      "oj-label-value": {
+        "path": "ojs/ojlabelvalue"
+      },
+      "oj-option": {
+        "path": "ojs/ojoption"
+      },
+      "oj-progress-bar": {
+        "path": "ojs/ojprogress-bar"
+      },
+      "oj-radioset": {
+        "path": "ojs/ojradioset"
+      },
+<<<<<<< HEAD
+      "oj-sample-export-data": {
+        "path": "oj-sample/export-data/loader"
+      },
+=======
+>>>>>>> f0510c9fdc52baa32d51e125b21b0755442e5df1
+      "oj-table": {
+        "path": "ojs/ojtable"
+      }
+
+    }
+  }
+}

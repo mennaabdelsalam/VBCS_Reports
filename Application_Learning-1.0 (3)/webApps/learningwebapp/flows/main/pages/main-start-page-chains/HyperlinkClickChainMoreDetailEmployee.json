@@ -1,0 +1,42 @@
+{
+  "description": "",
+  "root": "assignVariablesVPageEmployeeDetail",
+  "actions": {
+    "assignVariablesVPageEmployeeDetail": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.vPageEmployeeDetail": {
+          "source": "{{ $variables.current.row }}",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "callComponentOjDialogEmployeeMoreDetailsOpen"
+      }
+    },
+    "callComponentOjDialogEmployeeMoreDetailsOpen": {
+      "module": "vb/action/builtin/callComponentMethodAction",
+      "parameters": {
+        "component": "{{ document.getElementById('oj-dialog-employeeMoreDetails') }}",
+        "method": "open"
+      }
+    }
+  },
+  "variables": {
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}
