@@ -1,0 +1,117 @@
+<div class="oj-flex" style="margin-top:10px; background-color:white">
+  <oj-collapsible class="oj-flex-item oj-sm-12 oj-md-12" expanded="true">
+    <h6 slot="header">Search Criteria</h6>
+    <div class="oj-flex oj-sm-flex-initial" style="margin-top:25px">
+      <div class="oj-flex-item oj-sm-12 oj-md-11">
+        <oj-form-layout max-columns="2" label-edge="start" columns="2" direction="row">
+          <oj-label-value>
+            <oj-label slot="label" for="iDSearchEmployeeID">Employee ID</oj-label>
+            <oj-input-text id="iDSearchEmployeeID" label-hint="Enter Employee ID" slot="value"
+              value="{{ $variables.vPageSearchCriteria.EmployeeID }}"></oj-input-text>
+          </oj-label-value>
+          <oj-label-value>
+            <oj-label slot="label" for="iDSearchSalaryRadioSet"><span style="color:blue;">*</span>Salary
+
+            </oj-label>
+            <oj-radioset id="iDSearchSalaryRadioSet" label-hint="Radio Button Set" slot="value" required="true"
+              class="oj-choice-direction-row" value="{{ $variables.vPageSearchCriteria.SalaryRadioSetValue }}">
+              <oj-option value="YES">Y</oj-option>
+              <oj-bind-if test='[[ $variables.vPageSearchCriteria.SalaryRadioSetValue == "YES" ]]'>
+                <oj-input-text id="iDSearchSalaryValue" label-hint="Enter Salary" min="1" max=""
+                  virtual-keyboard="number" class="oj-form-control-max-width-sm oj-form-control-width-sm"
+                  value="{{ $variables.vPageSearchCriteria.Salary }}"></oj-input-text>
+              </oj-bind-if>
+              <oj-option value="NO">N</oj-option>
+            </oj-radioset>
+          </oj-label-value>
+        </oj-form-layout>
+      </div>
+      <div class="oj-flex-item oj-sm-12 oj-md-12">
+        <oj-button label="Search" style="margin-left:40%;margin-top:25px;width:200px"
+          class="oj-button-full-width oj-button-sm" on-oj-action="[[$listeners.buttonAction]]"></oj-button>
+      </div>
+    </div>
+  </oj-collapsible>
+</div>
+<div class="oj-flex">
+  <div class="oj-flex oj-sm-12 oj-md-12">
+    <hr class="oj-flex oj-sm-12 oj-md-12">
+  </div>
+</div>
+<div class="oj-flex">
+  <oj-sample-export-data class="oj-flex-item oj-sm-12 oj-md-12" chroming="outlined" file-name="employee.csv"
+    max-rows="10000" data="[[ $variables.employeeListSDP ]]"
+    columns='[{"field":"id","headerText":"ID","type":"number"},{"field":"firstName","headerText":"First Name","type":"string"},{"field":"lastName","headerText":"Last Name","type":"string"},{"field":"salary","headerText":"SALARY","type":"number"},{"field":"department","headerText":"DEPARTMENT","type":"number"}]'><span><oj-bind-text value="Export to CSV"></oj-bind-text></span>
+    <span slot="startIcon" class="oj-ux-ico-download"></span>
+  </oj-sample-export-data>
+</div>
+
+
+<div class="oj-flex" style="margin-top:10px;">
+  <oj-table scroll-policy="loadMoreOnScroll" class="oj-flex-item oj-sm-12 oj-md-12"
+    data="[[$variables.employeeListSDP]]"
+    columns='[{"headerText":"Id","field":"id", "template":"iDHyperlinkMoreDetailTemplate"},{"headerText":"first_name","field":"firstName", "sortable":"disabled"},{"headerText":"last_name","field":"lastName", "sortable":"disabled"},{"headerText":"email","field":"email", "sortable":"disabled"},{"headerText":"department","field":"department", "sortable":"disabled"}]'
+    selection-mode.row="single">
+    <template slot="iDHyperlinkMoreDetailTemplate">
+      <a target="_blank" on-click="[[$listeners.hyperlinkClick]]">
+        <oj-bind-text value="[[$current.data]]"></oj-bind-text>
+      </a>
+      <span class="oj-ux-ico-badge">
+        <oj-bind-text value="[[$current.data]]"></oj-bind-text>
+      </span>
+
+
+    </template>
+  </oj-table>
+</div>
+<oj-dialog style="display:none;width:500px; height:200px;font-size:0.8rem" dialog-title="Searching"
+  id="oj-dialog-searchingProgress" cancel-behavior="icon">
+  <div slot="body">
+    <div class="oj-flex">
+      <div class="oj-flex-item oj-sm-12 oj-md-4"></div>
+      <oj-progress-bar class="oj-flex-item oj-sm-12 oj-md-6" value="-1"></oj-progress-bar>
+    </div>
+  </div>
+  <div slot="footer">
+  </div>
+</oj-dialog>
+<oj-dialog style="display:none; width:800px; height:500px;font-size:0.8rem"
+  dialog-title='[[ $variables.vPageEmployeeDetail.firstName + " " + $variables.vPageEmployeeDetail.lastName ]]'
+  id="oj-dialog-employeeMoreDetails" cancel-behavior="icon">
+  <div slot="body">
+    <div class="oj-flex">
+      <div class="oj-flex-item oj-sm-12 oj-md-12">
+        <oj-form-layout max-columns="2" columns="2" label-edge="start" direction="row"
+          class="oj-sm-12 oj-md-12 oj-flex-item">
+          <oj-label-value>
+            <oj-label slot="label" for="dialogMoreDetailEmployeeID">ID</oj-label>
+            <oj-input-text id="dialogMoreDetailEmployeeID" label-hint="employeeID" slot="value"
+              value="{{ $variables.vPageEmployeeDetail.id }}" disabled="true" readonly="true"></oj-input-text>
+          </oj-label-value>
+          <oj-label-value>
+            <oj-label slot="label" for="dialogMoreDetailPhoneNumber">Phone Number</oj-label>
+            <oj-input-text id="dialogMoreDetailPhoneNumber" label-hint="phoneNumber" slot="value"
+              value="{{ $variables.vPageEmployeeDetail.phoneNumber }}" disabled="true" readonly="true" class="">
+            </oj-input-text>
+          </oj-label-value>
+          <oj-label-value>
+            <oj-label slot="label" for="dialogMoreDetailEmail">Email</oj-label>
+            <oj-input-text id="dialogMoreDetailEmail" label-hint="department" slot="value"
+              value="{{ $variables.vPageEmployeeDetail.email }}" disabled="true"
+              readonly="true" class="">
+            </oj-input-text>
+          </oj-label-value>
+           <oj-label-value>
+            <oj-label slot="label" for="dialogMoreDetailDepartment">Department</oj-label>
+            <oj-input-text id="dialogMoreDetailDepartment" label-hint="department" slot="value"
+              value="{{ $variables.vPageEmployeeDetail.department }}" disabled="true"
+              readonly="true" class="">
+            </oj-input-text>
+          </oj-label-value>
+        </oj-form-layout>
+      </div>
+
+    </div>
+  </div>
+
+</oj-dialog>
